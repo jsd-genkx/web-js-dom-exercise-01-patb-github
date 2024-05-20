@@ -1,0 +1,56 @@
+<!DOCTYPE html> 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Exercise 1</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+          margin: 0;
+        }
+        
+        .shadowed-box {
+          display: inline-block; 
+          box-shadow: 0px 2px 5px gray;
+          margin-top: 16px;
+          margin-left: 16px;
+          padding: 8px;
+        }
+
+        .active {
+          display: none;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="shadowed-box">
+      <h1 id="header">Hello World!</h1>
+      <br>
+      <button onclick="changeText()">Click me</button>
+      <button id="secondButton">Another Button</button>
+    </div>
+
+    <br>
+    <button id="hideHeader">Hide Header!</button>
+
+    <script>
+      let originalText = true;
+      function changeText() {
+        originalText ? document.getElementById("header").innerHTML = "Hello JavaScript InnerHTML!" 
+                     :  document.getElementById("header").innerHTML = "Hello World!";
+        originalText = !originalText;
+      }
+
+      document.getElementById("secondButton").addEventListener("click", changeText);
+      
+      const header = document.getElementById("header");
+      function toggleHeader() {
+        header.classList.toggle("active");
+      }
+      
+      document.getElementById("hideHeader").addEventListener("click", toggleHeader);
+    </script>
+  </body>
+</html>
